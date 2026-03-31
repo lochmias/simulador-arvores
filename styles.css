@@ -20,7 +20,8 @@
 
     .calc-container {
         background: white;
-        width: 95%;
+        width: 600px;
+        min-height: 500px;
         max-width: 950px; /* Aumentado para preencher a web */
         padding: 40px;
         border-radius: 25px;
