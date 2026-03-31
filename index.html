@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="calc-container">
+    <h2>🌳 Simulador: A árvore certa</h2>
+    
+    <div class="simulador-grid">
+        <!-- Coluna de Entradas -->
+        <div class="col-inputs">
+            <div class="question">
+                <label>1. Largura da rua:</label>
+                <select id="rua">
+                    <option value="menos7">Menos de 7 metros</option>
+                    <option value="mais7">7 metros ou mais</option>
+                </select>
+            </div>
+
+            <div class="question">
+                <label>2. Largura da calçada:</label>
+                <select id="calcada">
+                    <option value="menos3">Menor que 3 metros</option>
+                    <option value="mais3">3 metros ou maior</option>
+                </select>
+            </div>
+
+            <div class="question">
+                <label>3. Distância da casa até a calçada:</label>
+                <select id="casa">
+                    <option value="menos4">Menos de 4 metros</option>
+                    <option value="mais4">4 metros ou mais</option>
+                </select>
+            </div>
+
+            <button class="btn-calc" onclick="calcularPorte()">Ver Recomendação</button>
+        </div>
+
+        <!-- Coluna de Resultados/Dicas -->
+        <div class="col-result" id="display-area">
+            <div id="placeholder" class="placeholder-text">
+                <span style="font-size: 40px; display: block; margin-bottom: 10px;">🍃</span>
+                Preencha os dados ao lado para saber qual árvore plantar.
+            </div>
+
+            <div id="result-content" class="result-content">
+                <span class="porte-label">Porte Recomendado:</span>
+                <span class="porte-value" id="res-porte">---</span>
+                <div class="espacamento-info" id="res-espaco">---</div>
+                <p style="font-size: 11px; color: #888; margin-top: 20px; border-top: 1px solid #eee;">
+                    * Canteiro mínimo de 1m² ao redor da muda.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="scripts.js"></script>
+</body>
+</html>
