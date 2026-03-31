@@ -4,129 +4,69 @@
     ::-webkit-scrollbar-thumb { background: #41723D; border-radius: 10px; }
     ::-webkit-scrollbar-thumb:hover { background: #1A3B18; }
 
-    /* 2. CONFIGURAÇÕES DE BASE */
-    body, html {
-        margin: 0;
-        padding: 0;
-        font-family: 'Fredoka', sans-serif;
-        background-color: #f4f7f4;
-        color: #1A3B18;
-        display: flex;
-        justify-content: center;
-        align-items: center; 
-        min-height: 100vh;
-        box-sizing: border-box;
-    }
+/* 2. CONFIGURAÇÕES DE BASE */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Fredoka', sans-serif;
+    background-color: #f4f7f4;
+    color: #1A3B18;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    min-height: 100vh;
+    box-sizing: border-box;
+    width: 100%; /* Garante que o corpo ocupe toda a largura */
+}
 
-    .calc-container {
-        background: white;
-        width: 900px;
-        min-height: 500px;
-        padding: 40px;
-        border-radius: 25px;
-        box-shadow: 0 15px 40px rgba(0,0,0,0.06);
-        border-bottom: 10px solid #1A3B18;
-        box-sizing: border-box;
-        margin: 20px;
-    }
+.calc-container {
+    background: white;
+    /* Alterado de width para max-width + width 100% para melhor expansão */
+    width: 100%; 
+    max-width: 1000px; /* Aumentei um pouco para dar mais "ar" */
+    min-height: 550px;
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+    border-bottom: 10px solid #1A3B18;
+    box-sizing: border-box;
+    margin: 20px;
+}
 
-    h2 {
-        text-align: center;
-        margin-top: 0;
-        margin-bottom: 35px;
-        font-size: 26px;
-        color: #1A3B18;
-        text-transform: uppercase;
-        letter-spacing: -0.5px;
-    }
+/* 3. LAYOUT EM COLUNAS */
+.simulador-grid {
+    display: flex;
+    gap: 40px;
+    align-items: stretch; /* Faz as duas colunas terem a mesma altura visual */
+    width: 100%;
+}
 
-    /* 3. LAYOUT EM COLUNAS (DESKTOP) */
-    .simulador-grid {
-        display: flex;
-        gap: 40px;
-        align-items: flex-start;
-    }
+.col-inputs {
+    flex: 1.2; /* Dá um pouco mais de espaço para as perguntas */
+}
 
-    .col-inputs {
-        flex: 1; /* Coluna das perguntas */
-    }
+.col-result {
+    flex: 0.8; /* Coluna do resultado um pouco mais estreita e elegante */
+    background-color: #f9fbf9;
+    border-radius: 20px;
+    padding: 30px;
+    border: 2px dashed #d1dbd1;
+    
+    /* FIXO: Mantendo proporções sem "dançar" */
+    height: 450px;      /* Altura fixa generosa para não achatar */
+    overflow-y: auto;   /* Scroll caso o texto cresça demais */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centraliza o conteúdo verticalmente */
+    box-sizing: border-box;
+}
 
-    .col-result {
-        flex: 1; /* Coluna do resultado/instruções */
-        background-color: #f9fbf9;
-        border-radius: 20px;
-        padding: 30px;
-        border: 2px dashed #d1dbd1;
-        min-height: 250px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        transition: all 0.3s ease;
-        height: 100px;     /* Altura que caiba o maior resultado possível */
-        overflow-y: auto;  /* Se o texto for maior que 100px, surge uma barra de rolagem interna sem empurrar o layout */
-        margin: 20px 0;    /* Margens fixas */
-    }
-
-    .question {
-        margin-bottom: 25px;
-        text-align: left;
-    }
-
-    label {
-        display: block;
-        font-weight: 600;
-        margin-bottom: 10px;
-        font-size: 16px;
-    }
-
-    select {
-        width: 100%;
-        padding: 14px;
-        border-radius: 12px;
-        border: 2px solid #e0eadd;
-        font-family: 'Fredoka', sans-serif;
-        font-size: 15px;
-        color: #333;
-        outline: none;
-        cursor: pointer;
-        background-color: #fff;
-    }
-
-    select:focus { border-color: #41723D; }
-
-    .btn-calc {
-        width: 100%;
-        background-color: #F7941E;
-        color: white;
-        border: none;
-        padding: 18px;
-        border-radius: 15px;
-        font-family: 'Fredoka', sans-serif;
-        font-weight: 700;
-        font-size: 16px;
-        text-transform: uppercase;
-        cursor: pointer;
-        transition: 0.3s;
-        box-shadow: 0 4px 15px rgba(247, 148, 30, 0.3);
-    }
-
-    .btn-calc:hover {
-        background-color: #1A3B18;
-        transform: translateY(-2px);
-    }
-
-    /* 4. ELEMENTOS DO RESULTADO */
-    .placeholder-text {
-        text-align: center;
-        color: #888;
-        font-style: italic;
-    }
-
-    .result-content {
-        display: none; /* Escondido até calcular */
-        text-align: center;
-        animation: fadeIn 0.5s ease forwards;
-    }
+/* Garante que o conteúdo interno não quebre o layout */
+.result-content {
+    width: 100%;
+    display: none; 
+    text-align: center;
+}
 
     @keyframes fadeIn {
         from { opacity: 0; transform: translateY(10px); }
