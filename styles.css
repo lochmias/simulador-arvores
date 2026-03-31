@@ -1,8 +1,8 @@
-    /* 1. SCROLLBAR PERSONALIZADA */
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: #f4f7f4; }
-    ::-webkit-scrollbar-thumb { background: #41723D; border-radius: 10px; }
-    ::-webkit-scrollbar-thumb:hover { background: #1A3B18; }
+/* 1. SCROLLBAR PERSONALIZADA */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #f4f7f4; }
+::-webkit-scrollbar-thumb { background: #41723D; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #1A3B18; }
 
 /* 2. CONFIGURAÇÕES DE BASE */
 body, html {
@@ -16,14 +16,13 @@ body, html {
     align-items: center; 
     min-height: 100vh;
     box-sizing: border-box;
-    width: 100%; /* Garante que o corpo ocupe toda a largura */
+    width: 100%;
 }
 
 .calc-container {
     background: white;
-    /* Alterado de width para max-width + width 100% para melhor expansão */
-    width: 100%; 
-    max-width: 1000px; /* Aumentei um pouco para dar mais "ar" */
+    width: 95%; /* Garante respiro em telas médias */
+    max-width: 1000px; 
     min-height: 550px;
     padding: 40px;
     border-radius: 25px;
@@ -33,93 +32,174 @@ body, html {
     margin: 20px;
 }
 
-/* 3. LAYOUT EM COLUNAS */
+h2 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 35px;
+    font-size: 26px;
+    color: #1A3B18;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+}
+
+/* 3. LAYOUT EM COLUNAS (DESKTOP) */
 .simulador-grid {
     display: flex;
     gap: 40px;
-    align-items: stretch; /* Faz as duas colunas terem a mesma altura visual */
+    align-items: stretch; /* Mantém colunas com mesma altura */
     width: 100%;
 }
 
 .col-inputs {
-    flex: 1.2; /* Dá um pouco mais de espaço para as perguntas */
+    flex: 1.2;
 }
 
 .col-result {
-    flex: 0.8; /* Coluna do resultado um pouco mais estreita e elegante */
+    flex: 0.8;
     background-color: #f9fbf9;
     border-radius: 20px;
     padding: 30px;
     border: 2px dashed #d1dbd1;
-    
-    /* FIXO: Mantendo proporções sem "dançar" */
-    height: 450px;      /* Altura fixa generosa para não achatar */
-    overflow-y: auto;   /* Scroll caso o texto cresça demais */
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centraliza o conteúdo verticalmente */
+    justify-content: center;
+    transition: all 0.3s ease;
+    
+    /* ALTURA FIXA NO DESKTOP PARA NÃO MOVER O LAYOUT */
+    height: 450px;     
+    overflow-y: auto;  
     box-sizing: border-box;
 }
 
-/* Garante que o conteúdo interno não quebre o layout */
-.result-content {
-    width: 100%;
-    display: none; 
-    text-align: center;
+.question {
+    margin-bottom: 25px;
+    text-align: left; /* Padrão desktop */
 }
 
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+select {
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    border: 2px solid #e0eadd;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 15px;
+    color: #333;
+    outline: none;
+    cursor: pointer;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+select:focus { border-color: #41723D; }
+
+.btn-calc {
+    width: 100%;
+    background-color: #F7941E;
+    color: white;
+    border: none;
+    padding: 18px;
+    border-radius: 15px;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(247, 148, 30, 0.3);
+}
+
+.btn-calc:hover {
+    background-color: #1A3B18;
+    transform: translateY(-2px);
+}
+
+/* 4. ELEMENTOS DO RESULTADO */
+.placeholder-text {
+    text-align: center;
+    color: #888;
+    font-style: italic;
+}
+
+.result-content {
+    display: none; 
+    text-align: center;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.porte-label {
+    font-size: 13px;
+    text-transform: uppercase;
+    color: #666;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.porte-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1A3B18;
+    display: block;
+    line-height: 1.2;
+}
+
+.espacamento-info {
+    margin-top: 15px;
+    font-size: 15px;
+    color: #41723D;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+/* 5. RESPONSIVIDADE (MOBILE) */
+@media (max-width: 950px) {
+    .simulador-grid {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    body { 
+        align-items: flex-start; 
+        padding: 10px; 
     }
 
-    .porte-label {
-        font-size: 13px;
-        text-transform: uppercase;
-        color: #666;
-        display: block;
-        margin-bottom: 8px;
+    .calc-container {
+        padding: 25px;
+        width: 100%;
+        margin: 10px 0;
+        /* Itens-align não existe, usei text-align para centralizar conteúdo */
+        text-align: center; 
     }
 
-    .porte-value {
-        font-size: 28px;
-        font-weight: 700;
-        color: #1A3B18;
-        display: block;
-        line-height: 1.2;
+    .question {
+        text-align: center; /* Centraliza labels e textos no mobile */
     }
 
-    .espacamento-info {
-        margin-top: 15px;
-        font-size: 15px;
-        color: #41723D;
-        font-weight: 500;
-        line-height: 1.5;
+    .col-result {
+        width: 100%;
+        height: auto; /* IMPORTANTE: No mobile a altura deve ser automática */
+        min-height: 200px;
+        padding: 25px;
+        margin: 0;
     }
 
-    /* 5. RESPONSIVIDADE (MOBILE) */
-    @media (max-width: 950px) {
-        .simulador-grid {
-            flex-direction: column;
-        }
-        
-        body { align-items: flex-start; padding: 15px; }
+    h2 { font-size: 22px; }
+    label { font-size: 15px; }
+    .porte-value { font-size: 24px; }
 
-        .calc-container {
-            padding: 25px;
-            width: 100%;
-            margin: 10px 0;
-            items-align: center;
-        }
-
-        .col-result {
-            width: 100%;
-            min-height: auto;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        h2 { font-size: 20px; }
-        label { font-size: 14px; }
-        .porte-value { font-size: 22px; }
+    /* Centralizar selects no mobile caso não ocupem 100% */
+    select {
+        margin: 0 auto;
     }
+}
