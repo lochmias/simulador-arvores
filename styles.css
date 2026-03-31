@@ -1,10 +1,4 @@
-/* 1. SCROLLBAR PERSONALIZADA */
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: #f4f7f4; }
-::-webkit-scrollbar-thumb { background: #41723D; border-radius: 10px; }
-::-webkit-scrollbar-thumb:hover { background: #1A3B18; }
-
-/* 2. CONFIGURAÇÕES DE BASE */
+/* 1. CONFIGURAÇÕES DE BASE */
 body, html {
     margin: 0;
     padding: 0;
@@ -21,7 +15,7 @@ body, html {
 
 .calc-container {
     background: white;
-    width: 95%; /* Garante respiro em telas médias */
+    width: 95%; 
     max-width: 1000px; 
     min-height: 550px;
     padding: 40px;
@@ -43,11 +37,11 @@ h2 {
     letter-spacing: 1.9px;
 }
 
-/* 3. LAYOUT EM COLUNAS (DESKTOP) */
+/* 2. LAYOUT (DESKTOP) */
 .simulador-grid {
     display: flex;
     gap: 40px;
-    align-items: stretch; /* Mantém colunas com mesma altura */
+    align-items: stretch; 
     width: 100%;
 }
 
@@ -65,8 +59,6 @@ h2 {
     flex-direction: column;
     justify-content: center;
     transition: all 0.3s ease;
-    
-    /* ALTURA FIXA NO DESKTOP PARA NÃO MOVER O LAYOUT */
     height: 450px;     
     overflow-y: auto;  
     box-sizing: border-box;
@@ -121,7 +113,7 @@ select:focus { border-color: #41723D; }
     transform: translateY(-2px);
 }
 
-/* 4. ELEMENTOS DO RESULTADO */
+/* 3. ELEMENTOS DO RESULTADO */
 .placeholder-text {
     text-align: center;
     color: #888;
@@ -163,7 +155,7 @@ select:focus { border-color: #41723D; }
     line-height: 1.5;
 }
 
-/* 5. RESPONSIVIDADE (MOBILE) */
+/* 4. RESPONSIVIDADE (MOBILE) */
 @media (max-width: 950px) {
     .simulador-grid {
         flex-direction: column;
@@ -179,17 +171,16 @@ select:focus { border-color: #41723D; }
         padding: 25px;
         width: 100%;
         margin: 10px 0;
-        /* Itens-align não existe, usei text-align para centralizar conteúdo */
         text-align: center; 
     }
 
     .question {
-        text-align: center; /* Centraliza labels e textos no mobile */
+        text-align: center; 
     }
 
     .col-result {
         width: 100%;
-        height: auto; /* IMPORTANTE: No mobile a altura deve ser automática */
+        height: auto; 
         min-height: 200px;
         padding: 25px;
         margin: 0;
@@ -199,7 +190,6 @@ select:focus { border-color: #41723D; }
     label { font-size: 15px; }
     .porte-value { font-size: 24px; }
 
-    /* Centralizar selects no mobile caso não ocupem 100% */
     select {
         margin: 0 auto;
     }
