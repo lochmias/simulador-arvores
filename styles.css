@@ -63,6 +63,9 @@
         flex-direction: column;
         justify-content: center;
         transition: all 0.3s ease;
+        height: 100px;     /* Altura que caiba o maior resultado possível */
+        overflow-y: auto;  /* Se o texto for maior que 100px, surge uma barra de rolagem interna sem empurrar o layout */
+        margin: 20px 0;    /* Margens fixas */
     }
 
     .question {
